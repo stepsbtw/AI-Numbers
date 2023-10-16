@@ -11,10 +11,11 @@ def main():
         img_rect = (posx,posy,posx+28,posy+28)
         img = data_bank.crop(img_rect)
         data.append(img)
+        data[i].save('data_input/'f'input{i}.png')
         posx += 29 # adicionando 29 pq tem uma linha de 1 pixel entre as imagens.
-        if i%10 == 0:
+        if i%10 == 0 and i>0:
             posx = 0
             posy+=29
-        data[i].save('data_input/'f'input{i}.png')
+        
 
 main()
