@@ -7,6 +7,9 @@ DATA_BANK = Image.open(os.path.join('data.png'))
 
 def main():
     inputs = crop_data(DATA_BANK,28,28,100,10)
+    # aplicar hash pra facilitar o reconhecimento
+    hash = {}
+    for i,input in 
     return
 
 def crop_data(data_bank,width,height,qt,columns):
