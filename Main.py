@@ -17,6 +17,8 @@ def check(ias):
     outputs = []
     for i in range(len(ias)):
         outputs[i].append(ias[i].brain())
+        max = max(outputs)
+        outputs[i].index(max(outputs))
     
 
 class Ia:
@@ -46,6 +48,6 @@ class Ia:
     def activation(self,outputs):
         for i in range(len(outputs)):
             print(f"acho que {outputs[i]} {i}")
-        return outputs, max(outputs), outputs.index(max(outputs))
+        return outputs
 
 main()
