@@ -9,16 +9,29 @@ images_list = crop_data.images_list()
 input_image = images_list[0][0] # por enquanto
 
 def main():
-    for i in range(100):
+    for i in range(10):
         ias = Ia()
+        print(ias)
 
 def check(ias):
     answer = images_list.index(input_image)
+    ias_answer = []
     outputs = []
-    for i in range(len(ias)):
-        outputs[i].append(ias[i].brain())
-        max = max(outputs)
-        outputs[i].index(max(outputs))
+    best = ias[0]
+    best_outputs = best.brain()
+    best_answer = best_outputs[answer]
+    for i in range(1,len(ias)):
+        outputs = (ias[i].brain())
+        ias_answer.append(outputs[answer])
+        if ias_answer[i] > best_answer:
+            best = ias[i]
+            best_outputs = ias_answer[i]
+            best_answer = best_outputs[answer]
+     print(best)
+        
+    
+    
+    
     
 
 class Ia:
