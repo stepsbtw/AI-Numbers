@@ -2,23 +2,24 @@ import os
 import numpy
 from PIL import Image
 
-DATA_BANK = Image.open(os.path.join('data.png'))
-
 def main():
-   crop_data(DATA_BANK, 28, 28, 100, 10)
+   DATA_BANK = Image.open(os.path.join('data.png')) # importei a imagem geral
+
+def images_list(): # coloquei em uma lista
+   #crop_images(DATA_BANK, 28, 28, 100, 10)
    # indexar pra facilitar o reconhecimento
-   inputs = []
-   input_list = []
+   images = []
+   images_list = []
    for i in range(100):
-      inputs.append(Image.open(os.path.join('data_input/'f'input{i}.png')))
+      images.append(Image.open(os.path.join('data_input/'f'input{i}.png')))
       
    for i in range(0,100,10):
-      input_list.append(inputs[i:i+9])
+      images_list.append(images[i:i+9])
 
-   return
+   return images_list
 
 
-def crop_data(data_bank, width, height, qt, rows):
+def crop_images(data_bank, width, height, qt, rows): # dividi em varias imagens
    posx = 0
    posy = 0
    for i in range(qt):
