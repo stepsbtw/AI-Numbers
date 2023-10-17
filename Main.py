@@ -17,9 +17,9 @@ class Ia:
         self.weights = []
         self.bias = []
         for i in range(7840): # inputs * outputs
-            self.weights.append(random.uniform(-1,1))
+            self.weights.append(numpy.arange(-10,10,0.01))
         for i in range(10):
-            self.bias.append(random.randint(-10000000,10000000))
+            self.bias.append(random.randint(-10,10))
         
     def brain(self,input_image):
         input_image = input_image.convert('L') # GREYSCALE
@@ -32,7 +32,7 @@ class Ia:
                     weight_index = ((i+1) * (k*j))-1 # index do output +1 * index da linha * index do elemento tudo -1 pq index.
                     output_sum += (inputs[j][k] * self.weights[weight_index])
             
-            outputs.append(numpy.tanh((output_sum + self.bias[i])/10000000)) # preciso dos BIAS.
+            outputs.append(numpy.tanh((output_sum + self.bias[i]))) # preciso dos BIAS.
             print(outputs)
 
 main()
