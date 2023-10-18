@@ -20,6 +20,7 @@ def check(ias,images_list,input_image):
     ias_answer = []
     outputs = []
     best = ias[0]
+    best_index = 0
     best_outputs = best.brain(input_image)
     best_answer = best_outputs[answer]
     for i in range(1,len(ias)):
