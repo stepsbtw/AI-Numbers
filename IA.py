@@ -11,12 +11,6 @@ class Ia:
     def __init__(self):
         self.weights = [[random.uniform(-10,10) for i in range(784)] for j in range(10)]
         self.biases = [random.uniform(-10,10) for i in range(10)]
-        #self.biases = []
-        #self.weights = []
-        #for i in range(7840): # inputs * outputs
-            #self.weights.append(random.uniform(-10,10))
-        #for i in range(10):
-            #self.biases.append(random.uniform(-10,10))
 
     def brain(self,input_image):
         input_image = input_image.convert('L') # GREYSCALE
@@ -26,23 +20,10 @@ class Ia:
             list_ = [element/255 for element in list_] # dividindo todos elementos por 255
             inputs.extend(list_) # juntando tudo em uma unica lista
         outputs = [0,0,0,0,0,0,0,0,0,0]
-        output_sum = 0
-        
-        '''
-        for i in range(len(outputs)):
-            output_sum = 0
-            for j in range(len(inputs)):# index do output +1 * index da linha * index do elemento tudo -1 pq index.
-                index = len(outputs)*j+i
-                output_sum += (inputs[j]/255) * self.weights[index] # preciso dos BIAS.
-            outputs[i] = Functions.sigmoid((output_sum + self.biases[i])/100)
-        '''
+
         for i in range(len(outputs)):
             for weight,bias in zip(self.weights[i],self.biases):
-                outputs[i] = Functions.sigmoid((numpy.dot(inputs,weight)+bias)/100)
-
-        
-        #numpy.dot(self.weights[i],inputs) + bias[i]
-
+                outputs[i] = Functions.sigmoid((numpy.dot(inputs,weight)+ bias)/100)
 
         for i in range(len(outputs)):
             print(f"acho que {outputs[i]} {i}")
