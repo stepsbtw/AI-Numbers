@@ -1,11 +1,8 @@
 import numpy
 from PIL import Image
-import crop_data
+import old_crop_data
 
-images_list = crop_data.images_list()
-image = images_list[0][0]
+images_list = old_crop_data.images_list()
+image = images_list[0][0].convert('L')
 
-image.show()
-
-print(numpy.array(image))
-Image.fromarray(numpy.array(image)).show()
+print(numpy.asfortranarray(image))
