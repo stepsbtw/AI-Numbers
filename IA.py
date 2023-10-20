@@ -1,12 +1,7 @@
 import random
-import old_crop_data
 import numpy
 import Functions
 
-def main():
-    images_list = old_crop_data.images_list()
-    ia = Ia()
-    ia.brain(images_list[0][0])
 class Ia:
     def __init__(self):
         self.weights = [[random.uniform(-10,10) for i in range(784)] for j in range(10)]
@@ -29,5 +24,3 @@ class Ia:
             print(f"acho que {outputs[i]} {i}")
         #print(f'acho que {outputs[0]} 0')
         return outputs
-
-main()
