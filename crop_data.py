@@ -1,30 +1,25 @@
-
 import os
 import numpy
 from PIL import Image
 
-def main():
-   DATA_BANK = Image.open(os.path.join('data.png'))
+DATA_BANK = Image.open(os.path.join('data.png')) # importei a imagem geral
 
-def images_dict(): # coloquei em uma lista
-   #crop_images(DATA_BANK, 28, 28, 100, 10)
-   images_dict = {}
-   images = []
-   images_list = []
-   for i in range(10):
-       for j in range(10):
-           images.append(Image.open(os.path.join('data_input/'f'input{10*i+j}.png')))
-       images_list.append(images)
-       images = []
+def images_to_inputs(): 
+   inputs_list = []
+   inputs_list_list = []
+   for i in range(100):
+      # transformando em array e colocando em greyscale
+      image = (Image.open(os.path.join('data_input/'f'input{i}.png')).convert('L'))
+      image_array = numpy.array(image)
+      for sublist in image_array:
+         sublist = [element/255 for element in sublist] # colocando o greyscale em 0 a 1 (antes 0 a 255)
+         inputs_list.extend(sublist) # juntando, sublistas.
+      inputs_list_list.append(inputs_list)
+      inputs_list = []
+   return inputs_list_list # uma lista, com listas de inputs/
+   
 
-   for i in range(10):
-      images_dict[i] = tuple(images_list[i])
-   print(images_dict)
-   images_dict[0][1].show()
-   return images_dict
-
-
-def crop_images(data_bank, width, height, qt, rows): # dividi em varias imagens
+def crop_images(data_bank, width, height, qt, rows): # dividir e salva-las numa pasta.
    posx = 0
    posy = 0
    for i in range(qt):
@@ -35,5 +30,3 @@ def crop_images(data_bank, width, height, qt, rows): # dividi em varias imagens
       if i % rows == 0 and i > 0:
          posy = 0
          posx += width + 1
-
-main()
