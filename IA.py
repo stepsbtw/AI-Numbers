@@ -10,7 +10,7 @@ class Ia:
     def brain(self,inputs): # rede neural, pesos, outputs!
         outputs = [0,0,0,0,0,0,0,0,0,0]
         for i in range(len(outputs)): # simplificacao em forma de matrizes dos loops. 
-                outputs[i] = Functions.sigmoid((numpy.dot(inputs,self.weights)+ self.biases[i])/100)
+                outputs[i] = Functions.sigmoid((numpy.dot(self.weights,inputs)+ self.biases[i])/100)
         #for i in range(len(outputs)):
             #print(f"acho que {outputs[i]} {i}")
         return outputs
